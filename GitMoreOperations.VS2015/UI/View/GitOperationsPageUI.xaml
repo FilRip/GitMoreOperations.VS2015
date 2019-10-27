@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="GitMoreOperations.VS2015.UI.GitOperationsPageUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GitMoreOperations.VS2015.UI"
+             xmlns:teamExplorer="clr-namespace:Microsoft.TeamFoundation.Controls.WPF.TeamExplorer;assembly=Microsoft.TeamFoundation.Controls"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Border Grid.Row="0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="6">
+                <TextBlock TextWrapping="WrapWithOverflow">Tirer et pousser toutes les branches</TextBlock>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Button x:Uid="cleanButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2" MinWidth="75"
+                    MinHeight="23" Command="{Binding CleanCommand}" Content="Nettoyer dépot local"/>
+                <Button x:Uid="pullButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2" MinWidth="75"
+                    MinHeight="23" Command="{Binding PullCommand}" Content="Tirer"/>
+                <Button x:Uid="pushButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2" MinWidth="75"
+                    MinHeight="23" Command="{Binding PushCommand}" Content="Pousser"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
