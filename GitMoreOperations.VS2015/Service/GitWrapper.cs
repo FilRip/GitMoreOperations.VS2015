@@ -53,6 +53,12 @@ namespace GitMoreOperations.VS2015.Service
             return RunGitCommand(gitArguments);
         }
 
+        public GitCommandResult PullRequest()
+        {
+            var gitArguments = "request-pull";
+            return RunGitCommand(gitArguments);
+        }
+
         #endregion
 
         #region Sous-modules

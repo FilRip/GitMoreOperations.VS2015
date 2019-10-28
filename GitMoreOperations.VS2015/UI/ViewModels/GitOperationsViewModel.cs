@@ -11,11 +11,13 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             PullCommand = new RelayCommand(x => GitPull());
             PushCommand = new RelayCommand(x => GitPush());
             CleanCommand = new RelayCommand(x => GitClean());
+            PullRequestCommand = new RelayCommand(x => GitPullRequest());
         }
 
         public ICommand PullCommand { get; private set; }
         public ICommand PushCommand { get; private set; }
         public ICommand CleanCommand { get; private set; }
+        public ICommand PullRequestCommand { get; private set; }
 
         public void GitPull()
         {
@@ -38,6 +40,12 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         {
             var wrapper = new VsGitWrapper(GitOperationsPage.ActiveRepoPath, GitOperationsPage.OutputWindow);
             wrapper.Clean();
+        }
+
+        public void GitPullRequest()
+        {
+            var wrapper = new VsGitWrapper(GitOperationsPage.ActiveRepoPath, GitOperationsPage.OutputWindow);
+            wrapper.PullRequest();
         }
 
         public void Update()

@@ -10,13 +10,13 @@ using TeamExplorer.Common;
 
 namespace GitMoreOperations.VS2015.UI
 {
-    [TeamExplorerNavigationItem("A14BB4C5-1A56-4E67-A575-8531F4DE1F94", 1903)]
+    //[TeamExplorerNavigationItem("A14BB4C5-1A56-4E67-A575-8531F4DE1F94", 1903)]
     public class GitLogNavigationItem : TeamExplorerBaseNavigationItem
     {
         private readonly IGitExt gitService;
         private readonly ITeamExplorer teamExplorer;
 
-        [ImportingConstructor]
+        //[ImportingConstructor]
         public GitLogNavigationItem([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider) : base(serviceProvider)
         {
             try

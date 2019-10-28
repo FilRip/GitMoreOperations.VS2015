@@ -22,10 +22,12 @@
                 </Grid>
                 <Button x:Uid="cleanButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2" MinWidth="75"
                     MinHeight="23" Command="{Binding CleanCommand}" Content="Nettoyer dépot local"/>
+                <Button x:Uid="pullRequestButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2" MinWidth="75"
+                    MinHeight="23" Command="{Binding PullRequestCommand}" Content="Demande de tirage"/>
                 <Button x:Uid="pullButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2" MinWidth="75"
-                    MinHeight="23" Command="{Binding PullCommand}" Content="Tirer"/>
+                    MinHeight="23" Command="{Binding PullCommand}" Content="Tirer" Visibility="Hidden"/>
                 <Button x:Uid="pushButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2" MinWidth="75"
-                    MinHeight="23" Command="{Binding PushCommand}" Content="Pousser"/>
+                    MinHeight="23" Command="{Binding PushCommand}" Content="Pousser" Visibility="Hidden"/>
             </StackPanel>
         </Border>
     </Grid>
