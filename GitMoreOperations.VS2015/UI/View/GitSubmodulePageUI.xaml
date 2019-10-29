@@ -16,5 +16,6 @@
         <Button x:Uid="updateSubmodulesButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding UpdateSubmodulesCommand}" Content="Mettre à jour les sous-modules"/>
+        <ListBox x:Name="lbSousModules" Height="157" ItemsSource="{Binding ListeSousModule}"/>
     </StackPanel>
 </UserControl>

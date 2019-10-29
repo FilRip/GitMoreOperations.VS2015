@@ -19,6 +19,7 @@ namespace GitMoreOperations.VS2015.UI
         private static ITeamExplorer teamExplorer;
         private static IVsOutputWindowPane outputWindow;
         private readonly GitSubmodulePageUI ui;
+        private static IVsOutputWindowPane hiddenOutput;
 
         [ImportingConstructor]
         public GitSubmodulesPage([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
@@ -32,7 +33,9 @@ namespace GitMoreOperations.VS2015.UI
             var customGuid = new Guid("08A48010-2A4A-4DB1-AA58-36674F667904");
             outWindow.CreatePane(ref customGuid, "Git sous-modules", 1, 1);
             outWindow.GetPane(ref customGuid, out outputWindow);
-            
+
+            hiddenOutput = new Service.HiddenGitOutput();
+
             ui = new GitSubmodulePageUI();
             PageContent = ui;
         }
@@ -65,6 +68,11 @@ namespace GitMoreOperations.VS2015.UI
         public static void ActiveOutputWindow()
         {
             OutputWindow.Activate();
+        }
+
+        public static IVsOutputWindowPane MyHiddenGitOutput
+        {
+            get { return hiddenOutput; }
         }
 
         public static void ShowPage(string page)

@@ -71,8 +71,14 @@ namespace GitMoreOperations.VS2015.Service
 
         public GitCommandResult UpdateSubmodules()
         {
-            var gitArguments = "submodule update";
+            var gitArguments = "submodule update --progress --remote";
             return RunGitCommand(gitArguments);
+        }
+
+        public GitCommandResult ListeSousModules()
+        {
+            var gitArguments = "submodule status";
+            return RunGitCommand(gitArguments, true, true);
         }
 
         #endregion
@@ -160,7 +166,7 @@ namespace GitMoreOperations.VS2015.Service
 
         #region Processus Git.exe
 
-        private Process CreateGitProcess(string arguments, string repoDirectory)
+        private Process CreateGitProcess(string arguments, string repoDirectory, bool silence)
         {
             var gitInstallationPath = GitHelper.GetGitInstallationPath();
             var pathToGit = Path.Combine(Path.Combine(gitInstallationPath, "git.exe"));
@@ -174,19 +180,24 @@ namespace GitMoreOperations.VS2015.Service
             newProcess.StartInfo.WorkingDirectory = repoDirectory;
             newProcess.OutputDataReceived += OnOutputDataReceived;
             newProcess.ErrorDataReceived += OnErrorReceived;
-            newProcess.EnableRaisingEvents = true;
-            newProcess.Exited += P_Exited;
+            if (!silence)
+            {
+                newProcess.EnableRaisingEvents = true;
+                newProcess.Exited += P_Exited;
+            }
             return newProcess;
         }
 
-        private GitCommandResult RunGitCommand(string gitArguments)
+        private GitCommandResult RunGitCommand(string gitArguments, bool silence = false, bool waitEndExecute = false)
         {
             Process p;
-            p = CreateGitProcess(gitArguments, repoDirectory);
-            OnCommandOutputDataReceived(
-                new CommandOutputEventArgs("Lancement de git " + p.StartInfo.Arguments + Environment.NewLine));
+            p = CreateGitProcess(gitArguments, repoDirectory, silence);
+            if (!silence)
+                OnCommandOutputDataReceived(
+                    new CommandOutputEventArgs("Lancement de git " + p.StartInfo.Arguments + Environment.NewLine));
             Task launchTask = new Task(new Action(() => executeGit(p)));
             launchTask.Start();
+            if (waitEndExecute) launchTask.Wait();
             return new GitCommandResult(true, "");
         }
 
