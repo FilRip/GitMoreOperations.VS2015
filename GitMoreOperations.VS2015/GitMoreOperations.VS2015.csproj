@@ -67,6 +67,7 @@
     <Compile Include="UI\GitOperationsPage.cs" />
     <Compile Include="UI\ViewModels\GitLogViewModel.cs" />
     <Compile Include="UI\ViewModels\GitStashViewModel.cs" />
+    <Compile Include="UI\ViewModels\ViewModelBase.cs" />
     <Compile Include="UI\View\GitOperationsPageUI.xaml.cs">
       <DependentUpon>GitOperationsPageUI.xaml</DependentUpon>
     </Compile>

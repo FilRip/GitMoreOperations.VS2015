@@ -100,7 +100,7 @@ namespace GitMoreOperations.VS2015.Service
         public GitCommandResult ListStash()
         {
             var gitArguments = "stash list";
-            return RunGitCommand(gitArguments);
+            return RunGitCommand(gitArguments, true, true);
         }
 
         #endregion

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace GitMoreOperations.VS2015.UI.ViewModels
 {
-    public class GitSubmodulesViewModel
+    public class GitSubmodulesViewModel : ViewModelBase
     {
         public GitSubmodulesViewModel()
         {
@@ -12,6 +12,8 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             UpdateSubmodulesCommand = new RelayCommand(x => UpdateSubmodules());
             Update();
         }
+
+        public string[] _currentSelection;
 
         public ICommand InitialiseSubmodulesCommand { get; private set; }
         public ICommand UpdateSubmodulesCommand { get; private set; }
@@ -57,6 +59,16 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
                     }
                 }
                 return liste;
+            }
+        }
+
+        public string[] SousModuleSelectiones
+        {
+            get { return _currentSelection; }
+            set
+            {
+                _currentSelection = value;
+                base.RaisePropertyChanged(nameof(SousModuleSelectiones));
             }
         }
 

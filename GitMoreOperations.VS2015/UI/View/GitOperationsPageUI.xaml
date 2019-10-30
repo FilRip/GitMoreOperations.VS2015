@@ -9,8 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Border Grid.Row="0">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="6">
-                <TextBlock TextWrapping="WrapWithOverflow">Tirer et pousser toutes les branches</TextBlock>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="6,6,6,0" Height="284">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

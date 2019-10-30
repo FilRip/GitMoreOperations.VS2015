@@ -19,6 +19,7 @@ namespace GitMoreOperations.VS2015.UI
         private static ITeamExplorer teamExplorer;
         private static IVsOutputWindowPane outputWindow;
         private readonly GitStashPageUI ui;
+        private static IVsOutputWindowPane hiddenOutput;
 
         [ImportingConstructor]
         public GitStashPage([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
@@ -32,7 +33,9 @@ namespace GitMoreOperations.VS2015.UI
             var customGuid = new Guid("B602D8ED-2A92-4EB6-AE2C-A04F19386BAF");
             outWindow.CreatePane(ref customGuid, "Git stash", 1, 1);
             outWindow.GetPane(ref customGuid, out outputWindow);
-            
+
+            hiddenOutput = new Service.HiddenGitOutput();
+
             ui = new GitStashPageUI();
             PageContent = ui;
         }
@@ -65,6 +68,11 @@ namespace GitMoreOperations.VS2015.UI
         public static void ActiveOutputWindow()
         {
             OutputWindow.Activate();
+        }
+
+        public static IVsOutputWindowPane MyHiddenGitOutput
+        {
+            get { return hiddenOutput; }
         }
 
         public static void ShowPage(string page)
