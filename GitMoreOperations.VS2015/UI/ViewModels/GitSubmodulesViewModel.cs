@@ -13,7 +13,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             Update();
         }
 
-        public string[] _currentSelection;
+        public string _currentSelection = "";
 
         public ICommand InitialiseSubmodulesCommand { get; private set; }
         public ICommand UpdateSubmodulesCommand { get; private set; }
@@ -27,7 +27,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         public void UpdateSubmodules()
         {
             var wrapper = new VsGitWrapper(GitSubmodulesPage.ActiveRepoPath, GitSubmodulesPage.OutputWindow);
-            wrapper.UpdateSubmodules();
+            wrapper.UpdateSubmodules(_currentSelection);
         }
 
         private void ListeSousModules()
@@ -62,7 +62,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             }
         }
 
-        public string[] SousModuleSelectiones
+        public string SousModuleSelectiones
         {
             get { return _currentSelection; }
             set

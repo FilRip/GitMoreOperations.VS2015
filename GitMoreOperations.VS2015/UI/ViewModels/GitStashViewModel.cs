@@ -13,7 +13,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             Update();
         }
 
-        private string _currentSelected;
+        private string _currentSelected = "";
 
         public ICommand StashCommand { get; private set; }
         public ICommand PopStashCommand { get; private set; }
@@ -27,7 +27,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         public void PopStash()
         {
             var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.OutputWindow);
-            wrapper.PopStash();
+            wrapper.PopStash(_currentSelected);
         }
 
         private void listStash()

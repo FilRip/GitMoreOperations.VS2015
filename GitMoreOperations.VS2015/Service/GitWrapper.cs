@@ -69,9 +69,9 @@ namespace GitMoreOperations.VS2015.Service
             return RunGitCommand(gitArguments);
         }
 
-        public GitCommandResult UpdateSubmodules()
+        public GitCommandResult UpdateSubmodules(string nom)
         {
-            var gitArguments = "submodule update --progress --remote";
+            var gitArguments = "submodule update --progress --remote " + nom;
             return RunGitCommand(gitArguments);
         }
 
@@ -91,9 +91,9 @@ namespace GitMoreOperations.VS2015.Service
             return RunGitCommand(gitArguments);
         }
 
-        public GitCommandResult PopStash()
+        public GitCommandResult PopStash(string nom)
         {
-            var gitArguments = "stash pop";
+            var gitArguments = "stash pop " + nom;
             return RunGitCommand(gitArguments);
         }
 
