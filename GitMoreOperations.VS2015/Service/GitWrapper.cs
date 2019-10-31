@@ -97,6 +97,12 @@ namespace GitMoreOperations.VS2015.Service
             return RunGitCommand(gitArguments);
         }
 
+        public GitCommandResult DelStash(string nom)
+        {
+            var gitArguments = "stash drop " + nom;
+            return RunGitCommand(gitArguments, waitEndExecute: true);
+        }
+
         public GitCommandResult ListStash()
         {
             var gitArguments = "stash list";

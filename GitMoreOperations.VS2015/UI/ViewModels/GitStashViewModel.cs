@@ -10,6 +10,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         {
             StashCommand = new RelayCommand(x => Stash());
             PopStashCommand = new RelayCommand(x => PopStash());
+            DelStashCommand = new RelayCommand(x => DelStash());
             Update();
         }
 
@@ -17,6 +18,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
 
         public ICommand StashCommand { get; private set; }
         public ICommand PopStashCommand { get; private set; }
+        public ICommand DelStashCommand { get; private set; }
 
         public void Stash()
         {
@@ -28,6 +30,13 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         {
             var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.OutputWindow);
             wrapper.PopStash(_currentSelected);
+        }
+
+        public void DelStash()
+        {
+            var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.OutputWindow);
+            wrapper.DelStash(_currentSelected);
+            Update();
         }
 
         private void listStash()

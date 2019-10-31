@@ -14,6 +14,9 @@
         <Button x:Uid="unStashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding PopStashCommand}" Content="UnStash"/>
-        <ListBox x:Name="lbStash" Height="223" ItemsSource="{Binding ListeStash}" SelectedItem="{Binding StashSelectiones, Mode=TwoWay}"/>
+        <Button x:Uid="delStashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
+                MinWidth="75"
+                MinHeight="23" Command="{Binding DelStashCommand}" Content="Supprime le stash"/>
+        <ListBox x:Name="lbStash" Height="188" ItemsSource="{Binding ListeStash}" SelectedItem="{Binding StashSelectiones, Mode=TwoWay}"/>
     </StackPanel>
 </UserControl>
