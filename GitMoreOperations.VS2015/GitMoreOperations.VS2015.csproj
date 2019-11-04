@@ -103,7 +103,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\GitOperationsPackage.ico" />
-    <Content Include="Resources\LinkIcon.png" />
+    <Content Include="Resources\LinkIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

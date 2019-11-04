@@ -8,15 +8,18 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="6">
+        <TextBlock TextWrapping="WrapWithOverflow">Nom du stash :</TextBlock>
+        <TextBox Text="{Binding NomStash}"/>
         <Button x:Uid="stashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding StashCommand}" Content="Stash"/>
+        <CheckBox IsChecked="{Binding DelAfterPop}">Supprimer après avoir appliqué le stash</CheckBox>
         <Button x:Uid="unStashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
-                MinHeight="23" Command="{Binding PopStashCommand}" Content="UnStash"/>
+                MinHeight="23" Command="{Binding PopStashCommand}" Content=" Appliquer un stash"/>
         <Button x:Uid="delStashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
-                MinHeight="23" Command="{Binding DelStashCommand}" Content="Supprime le stash"/>
-        <ListBox x:Name="lbStash" Height="188" ItemsSource="{Binding ListeStash}" SelectedItem="{Binding StashSelectiones, Mode=TwoWay}"/>
+                MinHeight="23" Command="{Binding DelStashCommand}" Content="Supprimer le stash"/>
+        <ListBox x:Name="lbStash" Height="188" ItemsSource="{Binding ListeStash}" SelectedItem="{Binding StashSelectiones, Mode=TwoWay}" Foreground="{x:Static Brushes.Gray}"/>
     </StackPanel>
 </UserControl>

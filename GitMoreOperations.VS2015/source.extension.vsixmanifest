@@ -3,10 +3,16 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011"
                  xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="82F97C3D-40F4-4C20-8833-D137D39123EF" Version="1.4" Language="fr-FR"
+    <Identity Id="82F97C3D-40F4-4C20-8833-D137D39123EF" Version="1.6" Language="fr-FR"
               Publisher="Philippe TREILLE" />
     <DisplayName>Git MoreOperations</DisplayName>
     <Description xml:space="preserve">Ajout d'opérations Git pour Team Explorer</Description>
+    <MoreInfo>https://github.com/FilRip/GitMoreOperations.VS2015</MoreInfo>
+    <License>https://creativecommons.org/licenses/by-sa/4.0/deed.fr</License>
+    <GettingStartedGuide>https://github.com/FilRip/GitMoreOperations.VS2015</GettingStartedGuide>
+    <ReleaseNotes>https://github.com/FilRip/GitMoreOperations.VS2015</ReleaseNotes>
+    <Icon>Resources\LinkIcon.png</Icon>
+    <PreviewImage>Resources\LinkIcon.png</PreviewImage>
     <Tags>Git</Tags>
   </Metadata>
   <Installation>

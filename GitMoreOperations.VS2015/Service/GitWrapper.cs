@@ -85,9 +85,9 @@ namespace GitMoreOperations.VS2015.Service
 
         #region Stash
 
-        public GitCommandResult Stash()
+        public GitCommandResult Stash(string nom)
         {
-            var gitArguments = "stash push";
+            var gitArguments = "stash push -a " + nom;
             return RunGitCommand(gitArguments);
         }
 

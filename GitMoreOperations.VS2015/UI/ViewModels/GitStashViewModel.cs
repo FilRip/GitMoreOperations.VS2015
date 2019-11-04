@@ -12,9 +12,12 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             PopStashCommand = new RelayCommand(x => PopStash());
             DelStashCommand = new RelayCommand(x => DelStash());
             Update();
+            _delAfterPop = true;
         }
 
         private string _currentSelected = "";
+        private string _nom = "";
+        private bool _delAfterPop;
 
         public ICommand StashCommand { get; private set; }
         public ICommand PopStashCommand { get; private set; }
@@ -23,17 +26,24 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         public void Stash()
         {
             var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.OutputWindow);
-            wrapper.Stash();
+            wrapper.Stash(_nom);
+            Update();
         }
 
         public void PopStash()
         {
             var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.OutputWindow);
             wrapper.PopStash(_currentSelected);
+            if (_delAfterPop)
+            {
+                DelStash();
+                Update();
+            }
         }
 
         public void DelStash()
         {
+            if (string.IsNullOrWhiteSpace(_currentSelected)) return;
             var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.OutputWindow);
             wrapper.DelStash(_currentSelected);
             Update();
@@ -44,6 +54,18 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             GitStashPage.MyHiddenGitOutput.Clear();
             var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.MyHiddenGitOutput);
             wrapper.ListStash();
+        }
+
+        public bool DelAfterPop
+        {
+            get { return _delAfterPop; }
+            set { _delAfterPop = value; base.RaisePropertyChanged(nameof(DelAfterPop)); }
+        }
+
+        public string NomStash
+        {
+            get { return _nom; }
+            set { _nom = value; base.RaisePropertyChanged(nameof(NomStash)); }
         }
 
         public ObservableCollection<string> ListeStash
