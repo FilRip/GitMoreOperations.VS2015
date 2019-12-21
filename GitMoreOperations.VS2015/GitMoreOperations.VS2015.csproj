@@ -102,6 +102,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="licence.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\GitOperationsPackage.ico" />
     <Content Include="Resources\LinkIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
