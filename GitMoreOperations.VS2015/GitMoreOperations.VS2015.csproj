@@ -60,6 +60,7 @@
     <Compile Include="Service\GitWrapper.cs" />
     <Compile Include="Service\GitHelper.cs" />
     <Compile Include="Service\HiddenGitOutput.cs" />
+    <Compile Include="UI\CouleursThemeVS.cs" />
     <Compile Include="UI\GitLogPage.cs" />
     <Compile Include="UI\GitSkipFilesPage.cs" />
     <Compile Include="UI\GitStashPage.cs" />
