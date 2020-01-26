@@ -13,7 +13,7 @@ using EnvDTE;
 
 namespace GitMoreOperations.VS2015.UI
 {
-    //[TeamExplorerPage(GitOperationsGuids.GitLogPage, Undockable = true)]
+    [TeamExplorerPage(GitOperationsGuids.GitLogPage, Undockable = true)]
     public class GitLogPage : TeamExplorerBasePage
     {
         private static IGitExt gitService;
@@ -22,7 +22,7 @@ namespace GitMoreOperations.VS2015.UI
         private readonly GitLogPageUI ui;
         private static DTE ServiceDTE;
 
-        //[ImportingConstructor]
+        [ImportingConstructor]
         public GitLogPage([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
         {
             Title = "Git Journal";

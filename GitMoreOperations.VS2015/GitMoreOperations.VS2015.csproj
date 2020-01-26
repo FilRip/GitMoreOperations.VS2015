@@ -61,13 +61,19 @@
     <Compile Include="Service\GitHelper.cs" />
     <Compile Include="Service\HiddenGitOutput.cs" />
     <Compile Include="UI\GitLogPage.cs" />
+    <Compile Include="UI\GitSkipFilesPage.cs" />
     <Compile Include="UI\GitStashPage.cs" />
     <Compile Include="UI\NavigationItem\GitLogNavigationItem.cs" />
     <Compile Include="UI\NavigationItem\GitOperationsNavigationItem.cs" />
     <Compile Include="UI\GitOperationsPage.cs" />
+    <Compile Include="UI\NavigationItem\GitSkipFilesNavigationItem.cs" />
+    <Compile Include="UI\ViewModels\GitSkipFilesViewModel.cs" />
     <Compile Include="UI\ViewModels\GitLogViewModel.cs" />
     <Compile Include="UI\ViewModels\GitStashViewModel.cs" />
     <Compile Include="UI\ViewModels\ViewModelBase.cs" />
+    <Compile Include="UI\View\GitSkipFilesPageUI.xaml.cs">
+      <DependentUpon>GitSkipFilesPageUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\View\GitOperationsPageUI.xaml.cs">
       <DependentUpon>GitOperationsPageUI.xaml</DependentUpon>
     </Compile>
@@ -102,6 +108,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="licence.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\GitOperationsPackage.ico" />
     <Content Include="Resources\LinkIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -248,6 +258,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="UI\View\GitSkipFilesPageUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\View\GitOperationsPageUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

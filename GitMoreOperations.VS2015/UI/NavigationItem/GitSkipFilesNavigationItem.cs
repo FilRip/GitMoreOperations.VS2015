@@ -1,32 +1,33 @@
-﻿using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.Controls;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.TeamFoundation.Git.Extensibility;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Linq;
+using Microsoft.TeamFoundation.Client;
+using Microsoft.TeamFoundation.Controls;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.TeamFoundation.Git.Extensibility;
 using TeamExplorer.Common;
 
 namespace GitMoreOperations.VS2015.UI
 {
-    [TeamExplorerNavigationItem("A14BB4C5-1A56-4E67-A575-8531F4DE1F94", 1903)]
-    public class GitLogNavigationItem : TeamExplorerBaseNavigationItem
+    [TeamExplorerNavigationItem("A14BB4C5-1A56-4E67-A575-8531F4DE1F94", 1904)]
+    public class GitSkipFilesNavigationItem : TeamExplorerBaseNavigationItem
     {
         private readonly IGitExt gitService;
         private readonly ITeamExplorer teamExplorer;
 
         [ImportingConstructor]
-        public GitLogNavigationItem([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider) : base(serviceProvider)
+        public GitSkipFilesNavigationItem([Import(typeof (SVsServiceProvider))] IServiceProvider serviceProvider)
+            : base(serviceProvider)
         {
             try
             {
                 UpdateVisible();
-                Text = "Git Journal";
+                Text = "Git Persister";
                 Image = Resources.LinkIcon;
                 IsVisible = true;
                 teamExplorer = GetService<ITeamExplorer>();
-                gitService = (IGitExt)serviceProvider.GetService(typeof(IGitExt));
+                gitService = (IGitExt) serviceProvider.GetService(typeof (IGitExt));
                 teamExplorer.PropertyChanged += TeamExplorerOnPropertyChanged;
             }
             catch (Exception ex)
@@ -62,7 +63,7 @@ namespace GitMoreOperations.VS2015.UI
 
         public override void Execute()
         {
-            teamExplorer.NavigateToPage(new Guid(GitOperationsGuids.GitLogPage), null);
+            teamExplorer.NavigateToPage(new Guid(GitOperationsGuids.GitSkipFilesPage), null);
         }
     }
 }
