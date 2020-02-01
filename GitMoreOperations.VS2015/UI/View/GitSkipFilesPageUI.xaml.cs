@@ -4,7 +4,7 @@ using GitMoreOperations.VS2015.UI.ViewModels;
 namespace GitMoreOperations.VS2015.UI
 {
     /// <summary>
-    ///     Interaction logic for GitStashPageUI.xaml
+    ///     Interaction logic for GitSkipFilesPageUI.xaml
     /// </summary>
     public partial class GitSkipFilesPageUI : UserControl
     {

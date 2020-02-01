@@ -3,7 +3,7 @@ using Microsoft.TeamFoundation.MVVM;
 
 namespace GitMoreOperations.VS2015.UI.ViewModels
 {
-    public class GitSkipFilesViewModel
+    public class GitSkipFilesViewModel : ViewModelBase
     {
         public GitSkipFilesViewModel()
         {

@@ -257,7 +257,6 @@
       <Name>TeamExplorer.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Page Include="UI\View\GitSkipFilesPageUI.xaml">
       <Generator>MSBuild:Compile</Generator>
