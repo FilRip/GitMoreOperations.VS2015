@@ -23,6 +23,6 @@
         <Button x:Uid="delStashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding DelStashCommand}" Content="Supprimer le stash"/>
-        <ListBox x:Name="lbStash" Height="188" ItemsSource="{Binding ListeStash}" SelectedItem="{Binding StashSelectiones, Mode=TwoWay}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}"/>
+        <ListBox x:Name="lbStash" Height="142" ItemsSource="{Binding ListeStash}" SelectedItem="{Binding StashSelectiones, Mode=TwoWay}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}"/>
     </StackPanel>
 </UserControl>

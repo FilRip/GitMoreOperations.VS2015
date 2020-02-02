@@ -30,7 +30,7 @@ namespace GitMoreOperations.VS2015.UI
                 gitService = (IGitExt)serviceProvider.GetService(typeof(IGitExt));
                 teamExplorer.PropertyChanged += TeamExplorerOnPropertyChanged;
                 ArgbColor = Color.FromRgb(0xAE, 0x3C, 0xBA).ToInt32();
-                IsEnabled = true;
+                IsEnabled = false;
             }
             catch (Exception ex)
             {

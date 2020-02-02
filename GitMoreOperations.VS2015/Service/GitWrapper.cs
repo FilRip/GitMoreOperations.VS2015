@@ -61,6 +61,34 @@ namespace GitMoreOperations.VS2015.Service
 
         #endregion
 
+        #region SkipFiles
+
+        public GitCommandResult SkipFile(string nom)
+        {
+            var gitArguments = "submodule update-index --skip-worktree " + nom;
+            return RunGitCommand(gitArguments);
+        }
+
+        public GitCommandResult UnSkipFile(string nom)
+        {
+            var gitArguments = "submodule update-index --no-skip-worktree " + nom;
+            return RunGitCommand(gitArguments);
+        }
+        
+        public GitCommandResult ListeFichiersModifies()
+        {
+            var gitArguments = "ls-files | findstr ^M";
+            return RunGitCommand(gitArguments);
+        }
+
+        public GitCommandResult ListeFichiersAssumes()
+        {
+            var gitArguments = "ls-files | findstr ^S";
+            return RunGitCommand(gitArguments);
+        }
+
+        #endregion
+
         #region Sous-modules
 
         public GitCommandResult InitialiseSubmodules()
