@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TeamFoundation.Git.Extensibility;
 using TeamExplorer.Common;
 using EnvDTE;
+using GitMoreOperations.VS2015.UI.Views;
 
 namespace GitMoreOperations.VS2015.UI
 {

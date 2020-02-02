@@ -7,7 +7,7 @@ namespace TeamExplorer.Common
     /// <summary>
     ///     Team Explorer base navigation item class.
     /// </summary>
-    public class TeamExplorerBaseNavigationItem : TeamExplorerBase, ITeamExplorerNavigationItem
+    public class TeamExplorerBaseNavigationItem : TeamExplorerBase, ITeamExplorerNavigationItem, ITeamExplorerNavigationItem2
     {
         private Image image;
         private bool isVisible = true;
@@ -60,6 +60,45 @@ namespace TeamExplorer.Common
             {
                 isVisible = value;
                 RaisePropertyChanged("IsVisible");
+            }
+        }
+
+        bool isEnabled;
+        public bool IsEnabled
+        {
+            get
+            {
+                return isEnabled;
+            }
+            set
+            {
+                isEnabled = value;
+            }
+        }
+
+        int argbColor;
+        public int ArgbColor
+        {
+            get
+            {
+                return argbColor;
+            }
+            set
+            {
+                argbColor = value;
+            }
+        }
+
+        object icon;
+        public object Icon
+        {
+            get
+            {
+                return icon;
+            }
+            set
+            {
+                icon = value;
             }
         }
 

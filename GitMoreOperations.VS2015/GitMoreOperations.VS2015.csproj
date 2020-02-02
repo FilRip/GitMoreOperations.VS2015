@@ -72,10 +72,7 @@
     <Compile Include="UI\ViewModels\GitLogViewModel.cs" />
     <Compile Include="UI\ViewModels\GitStashViewModel.cs" />
     <Compile Include="UI\ViewModels\ViewModelBase.cs" />
-    <Compile Include="UI\View\GitSkipFilesPageUI.xaml.cs">
-      <DependentUpon>GitSkipFilesPageUI.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\View\GitOperationsPageUI.xaml.cs">
+    <Compile Include="UI\Views\GitOperationsPageUI.xaml.cs">
       <DependentUpon>GitOperationsPageUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\NavigationItem\GitStashNavigationItem.cs" />
@@ -87,13 +84,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\GitLogPageUI.xaml.cs">
+    <Compile Include="UI\Views\GitLogPageUI.xaml.cs">
       <DependentUpon>GitLogPageUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\GitStashPageUI.xaml.cs">
+    <Compile Include="UI\Views\GitSkipFilesPageUI.xaml.cs">
+      <DependentUpon>GitSkipFilesPageUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\GitStashPageUI.xaml.cs">
       <DependentUpon>GitStashPageUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\GitSubmodulePageUI.xaml.cs">
+    <Compile Include="UI\Views\GitSubmodulePageUI.xaml.cs">
       <DependentUpon>GitSubmodulePageUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\GitSubmodulesPage.cs" />
@@ -258,23 +258,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\View\GitSkipFilesPageUI.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\View\GitOperationsPageUI.xaml">
+    <Page Include="UI\Views\GitOperationsPageUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\GitLogPageUI.xaml">
+    <Page Include="UI\Views\GitLogPageUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\View\GitStashPageUI.xaml">
+    <Page Include="UI\Views\GitSkipFilesPageUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\GitStashPageUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\View\GitSubmodulePageUI.xaml">
+    <Page Include="UI\Views\GitSubmodulePageUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

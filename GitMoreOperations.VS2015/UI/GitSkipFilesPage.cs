@@ -1,4 +1,5 @@
-﻿using Microsoft.TeamFoundation.Controls;
+﻿using GitMoreOperations.VS2015.UI.Views;
+using Microsoft.TeamFoundation.Controls;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TeamFoundation.Git.Extensibility;
@@ -21,6 +22,7 @@ namespace GitMoreOperations.VS2015.UI
         private readonly GitSkipFilesPageUI ui;
         private static IVsOutputWindowPane hiddenOutput;
 
+        [ImportingConstructor]
         public GitSkipFilesPage([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
         {
             Title = "Git SkipFiles";

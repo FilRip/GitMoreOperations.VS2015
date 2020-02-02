@@ -1,10 +1,10 @@
-﻿using System.Windows.Controls;
-using GitMoreOperations.VS2015.UI.ViewModels;
+﻿using GitMoreOperations.VS2015.UI.ViewModels;
+using System.Windows.Controls;
 
-namespace GitMoreOperations.VS2015.UI
+namespace GitMoreOperations.VS2015.UI.Views
 {
     /// <summary>
-    ///     Interaction logic for GitSkipFilesPageUI.xaml
+    /// Logique d'interaction pour GitSkipFilesPageUI.xaml
     /// </summary>
     public partial class GitSkipFilesPageUI : UserControl
     {

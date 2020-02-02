@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using GitMoreOperations.VS2015.UI.ViewModels;
 
-namespace GitMoreOperations.VS2015.UI
+namespace GitMoreOperations.VS2015.UI.Views
 {
     /// <summary>
     ///     Interaction logic for GitOperationsPageUI.xaml

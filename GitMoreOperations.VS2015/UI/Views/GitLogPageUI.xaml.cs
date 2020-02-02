@@ -1,19 +1,19 @@
 ﻿using System.Windows.Controls;
 using GitMoreOperations.VS2015.UI.ViewModels;
 
-namespace GitMoreOperations.VS2015.UI
+namespace GitMoreOperations.VS2015.UI.Views
 {
     /// <summary>
     ///     Interaction logic for GitStashPageUI.xaml
     /// </summary>
-    public partial class GitStashPageUI : UserControl
+    public partial class GitLogPageUI : UserControl
     {
-        private readonly GitStashViewModel model;
+        private readonly GitLogViewModel model;
 
-        public GitStashPageUI()
+        public GitLogPageUI()
         {
             InitializeComponent();
-            model = new GitStashViewModel();
+            model = new GitLogViewModel();
 
             DataContext = model;
         }
