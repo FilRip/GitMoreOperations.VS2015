@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using Microsoft.TeamFoundation.MVVM;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace GitMoreOperations.VS2015.UI.ViewModels
 {
@@ -15,12 +16,10 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         public ICommand SkipFileCommand { get; private set; }
         public ICommand UnSkipFileCommand { get; private set; }
 
-        private ObservableCollection<string> _listeModif;
-        private ObservableCollection<string> _listeSkip;
-        private string[] _listeModifSelect;
-        private string[] _listeSkipSelect;
+        private ObservableCollection<SelectionItemListBox> _listeModif;
+        private ObservableCollection<SelectionItemListBox> _listeSkip;
 
-        public ObservableCollection<string> ListeModif
+        public ObservableCollection<SelectionItemListBox> ListeModif
         {
             get { return _listeModif; }
             set
@@ -30,7 +29,7 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             }
         }
 
-        public ObservableCollection<string> ListeSkip
+        public ObservableCollection<SelectionItemListBox> ListeSkip
         {
             get { return _listeSkip; }
             set
@@ -40,44 +39,26 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             }
         }
 
-        public string[] ListeSkipSelected
-        {
-            get { return _listeSkipSelect; }
-            set
-            {
-                _listeSkipSelect = value;
-                RaisePropertyChanged(nameof(ListeSkipSelected));
-            }
-        }
-
-        public string[] ListeModifSelected
-        {
-            get { return _listeModifSelect; }
-            set
-            {
-                _listeModifSelect = value;
-                RaisePropertyChanged(nameof(ListeModifSelected));
-            }
-        }
-
         public void SkipFile()
         {
-            var wrapper = new VsGitWrapper(GitLogPage.ActiveRepoPath, GitLogPage.OutputWindow);
-            foreach (string fichier in _listeModifSelect)
-                wrapper.SkipFile(fichier);
+            var wrapper = new VsGitWrapper(GitSkipFilesPage.ActiveRepoPath, GitSkipFilesPage.OutputWindow);
+            foreach (SelectionItemListBox selected in _listeModif.Where(i => i.IsSelected).ToList())
+                wrapper.SkipFile(selected.Item);
             Update();
         }
 
         public void UnSkipFile()
         {
-            var wrapper = new VsGitWrapper(GitLogPage.ActiveRepoPath, GitLogPage.OutputWindow);
-            foreach (string fichier in _listeSkipSelect)
-                wrapper.UnSkipFile(fichier);
+            var wrapper = new VsGitWrapper(GitSkipFilesPage.ActiveRepoPath, GitSkipFilesPage.OutputWindow);
+            foreach (SelectionItemListBox selected in _listeSkip.Where(i => i.IsSelected).ToList())
+                wrapper.UnSkipFile(selected.Item);
             Update();
         }
 
         public void Update()
         {
+            Mouse.OverrideCursor = Cursors.Wait;
+            _listeModif = new ObservableCollection<SelectionItemListBox>();
             GitSkipFilesPage.MyHiddenGitOutput.Clear();
             var wrapper = new VsGitWrapper(GitSkipFilesPage.ActiveRepoPath, GitSkipFilesPage.MyHiddenGitOutput);
             wrapper.ListeFichiersModifies();
@@ -85,11 +66,13 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             if (!string.IsNullOrWhiteSpace(output.TouteLaSortie))
             {
                 string[] lignes;
-                lignes = output.TouteLaSortie.Trim().Split((char)13);
+                lignes = output.TouteLaSortie.Trim().Split("\r\n".ToCharArray(), System.StringSplitOptions.RemoveEmptyEntries);
                 foreach (string ligne in lignes)
-                    _listeModif.Add(ligne);
+                    _listeModif.Add(new SelectionItemListBox() { Item = ligne });
             }
+            RaisePropertyChanged(nameof(ListeModif));
 
+            _listeSkip = new ObservableCollection<SelectionItemListBox>();
             GitSkipFilesPage.MyHiddenGitOutput.Clear();
             wrapper = new VsGitWrapper(GitSkipFilesPage.ActiveRepoPath, GitSkipFilesPage.MyHiddenGitOutput);
             output = GitSkipFilesPage.MyHiddenGitOutput as Service.HiddenGitOutput;
@@ -97,10 +80,12 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             if (!string.IsNullOrWhiteSpace(output.TouteLaSortie))
             {
                 string[] lignes;
-                lignes = output.TouteLaSortie.Trim().Split((char)13);
+                lignes = output.TouteLaSortie.Trim().Split("\r\n".ToCharArray(), System.StringSplitOptions.RemoveEmptyEntries);
                 foreach (string ligne in lignes)
-                    _listeModif.Add(ligne);
+                    if (ligne.StartsWith("S ")) _listeSkip.Add(new SelectionItemListBox() { Item = ligne.Substring(2) });
             }
+            RaisePropertyChanged(nameof(ListeSkip));
+            Mouse.OverrideCursor = null;
         }
     }
 }

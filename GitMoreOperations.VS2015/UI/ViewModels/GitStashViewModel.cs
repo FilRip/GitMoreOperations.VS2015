@@ -11,7 +11,6 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
             StashCommand = new RelayCommand(x => Stash());
             PopStashCommand = new RelayCommand(x => PopStash());
             DelStashCommand = new RelayCommand(x => DelStash());
-            Update();
             _delAfterPop = true;
         }
 
@@ -22,6 +21,18 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
         public ICommand StashCommand { get; private set; }
         public ICommand PopStashCommand { get; private set; }
         public ICommand DelStashCommand { get; private set; }
+
+        private ObservableCollection<SelectionItemListBox> _listeModif;
+
+        public ObservableCollection<SelectionItemListBox> ListeModif
+        {
+            get { return _listeModif; }
+            set
+            {
+                _listeModif = value;
+                RaisePropertyChanged(nameof(ListeModif));
+            }
+        }
 
         public void Stash()
         {
@@ -105,7 +116,22 @@ namespace GitMoreOperations.VS2015.UI.ViewModels
 
         public void Update()
         {
+            Mouse.OverrideCursor = Cursors.Wait;
             listStash();
+            _listeModif = new ObservableCollection<SelectionItemListBox>();
+            GitStashPage.MyHiddenGitOutput.Clear();
+            var wrapper = new VsGitWrapper(GitStashPage.ActiveRepoPath, GitStashPage.MyHiddenGitOutput);
+            wrapper.ListeFichiersModifies();
+            Service.HiddenGitOutput output = GitStashPage.MyHiddenGitOutput as Service.HiddenGitOutput;
+            if (!string.IsNullOrWhiteSpace(output.TouteLaSortie))
+            {
+                string[] lignes;
+                lignes = output.TouteLaSortie.Trim().Split("\r\n".ToCharArray(), System.StringSplitOptions.RemoveEmptyEntries);
+                foreach (string ligne in lignes)
+                    _listeModif.Add(new SelectionItemListBox() { Item = ligne });
+            }
+            RaisePropertyChanged(nameof(ListeModif));
+            Mouse.OverrideCursor = null;
         }
     }
 }

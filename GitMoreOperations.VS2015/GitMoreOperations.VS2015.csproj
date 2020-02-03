@@ -68,6 +68,7 @@
     <Compile Include="UI\NavigationItem\GitOperationsNavigationItem.cs" />
     <Compile Include="UI\GitOperationsPage.cs" />
     <Compile Include="UI\NavigationItem\GitSkipFilesNavigationItem.cs" />
+    <Compile Include="UI\ViewModels\SelectionItemListBox.cs" />
     <Compile Include="UI\ViewModels\GitSkipFilesViewModel.cs" />
     <Compile Include="UI\ViewModels\GitLogViewModel.cs" />
     <Compile Include="UI\ViewModels\GitStashViewModel.cs" />

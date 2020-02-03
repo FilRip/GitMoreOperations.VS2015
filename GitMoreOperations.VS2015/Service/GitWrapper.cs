@@ -65,26 +65,26 @@ namespace GitMoreOperations.VS2015.Service
 
         public GitCommandResult SkipFile(string nom)
         {
-            var gitArguments = "submodule update-index --skip-worktree " + nom;
-            return RunGitCommand(gitArguments);
+            var gitArguments = "update-index --skip-worktree " + nom;
+            return RunGitCommand(gitArguments, waitEndExecute: true);
         }
 
         public GitCommandResult UnSkipFile(string nom)
         {
-            var gitArguments = "submodule update-index --no-skip-worktree " + nom;
-            return RunGitCommand(gitArguments);
+            var gitArguments = "update-index --no-skip-worktree " + nom;
+            return RunGitCommand(gitArguments, waitEndExecute: true);
         }
         
         public GitCommandResult ListeFichiersModifies()
         {
-            var gitArguments = "ls-files | findstr ^M";
-            return RunGitCommand(gitArguments);
+            var gitArguments = "ls-files -m";
+            return RunGitCommand(gitArguments, true, true);
         }
 
         public GitCommandResult ListeFichiersAssumes()
         {
-            var gitArguments = "ls-files | findstr ^S";
-            return RunGitCommand(gitArguments);
+            var gitArguments = "ls-files -v";
+            return RunGitCommand(gitArguments, true, true);
         }
 
         #endregion
@@ -115,7 +115,7 @@ namespace GitMoreOperations.VS2015.Service
 
         public GitCommandResult Stash(string nom)
         {
-            var gitArguments = "stash push -a " + nom;
+            var gitArguments = "stash push -a -u " + nom;
             return RunGitCommand(gitArguments);
         }
 

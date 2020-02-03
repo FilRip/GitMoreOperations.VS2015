@@ -6,15 +6,38 @@
              xmlns:local="clr-namespace:GitMoreOperations.VS2015.UI.Views"
              xmlns:ui="clr-namespace:GitMoreOperations.VS2015.UI"
              mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="6">
-        <ListBox x:Name="lbFichiersModif" Height="80" ItemsSource="{Binding ListeModif}" SelectedItem="{Binding ListeModifSelected, Mode=TwoWay}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}"/>
+        <ListBox x:Name="lbFichiersModif" Height="80" ItemsSource="{Binding ListeModif, NotifyOnSourceUpdated=True}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}" SelectionMode="Multiple">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Item}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="IsSelected" Value="{Binding Mode=TwoWay, Path=IsSelected}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
         <Button x:Uid="assumeButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding SkipFileCommand}" Content="Assumer ce(s) fichier(s)"/>
         <Button x:Uid="deassumeButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding UnSkipFileCommand}" Content="Réappliquer ce(s) fichier(s)"/>
-        <ListBox x:Name="lbFichiersSkip" Height="80" ItemsSource="{Binding ListeSkip}" SelectedItem="{Binding ListeSkipSelected, Mode=TwoWay}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}"/>
+        <ListBox x:Name="lbFichiersSkip" Height="80" ItemsSource="{Binding ListeSkip, NotifyOnSourceUpdated=True}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}" SelectionMode="Multiple">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Item}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="IsSelected" Value="{Binding Mode=TwoWay, Path=IsSelected}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
     </StackPanel>
 </UserControl>
