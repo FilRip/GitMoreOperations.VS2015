@@ -13,7 +13,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="6">
         <TextBlock TextWrapping="WrapWithOverflow">Liste des fichiers à mettre dans la remise :</TextBlock>
-        <ListBox x:Name="lbModif" Height="80" ItemsSource="{Binding ListeModif, NotifyOnSourceUpdated=True}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}">
+        <ListBox x:Name="lbModif" Height="120" ItemsSource="{Binding ListeModif, NotifyOnSourceUpdated=True}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Item}"/>
@@ -34,7 +34,7 @@
         <Button x:Uid="unStashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding PopStashCommand}" Content="Sortir de la remise"/>
-        <Button x:Uid="delStashButton" VerticalAlignment="Center" Margin="0,0,0,10" Padding="6,2,6,2"
+        <Button x:Uid="delStashButton" VerticalAlignment="Center" Margin="0,0,0,0" Padding="6,2,6,2"
                 MinWidth="75"
                 MinHeight="23" Command="{Binding DelStashCommand}" Content="Supprimer de la remise"/>
         <ListBox x:Name="lbStash" Height="142" ItemsSource="{Binding ListeStash}" SelectedItem="{Binding StashSelectiones, Mode=TwoWay}" Background="{DynamicResource {x:Static ui:CouleursThemeVS.MainBackground}}" Foreground="{DynamicResource {x:Static ui:CouleursThemeVS.MainForeground}}"/>
